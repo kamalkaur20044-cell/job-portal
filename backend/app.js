@@ -13,9 +13,11 @@ const app = express();
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowed = (process.env.FRONTEND_URL || "http://localhost:5173").trim();
-      // Allow requests with no origin (e.g. mobile apps, curl) or matching origin
-      if (!origin || origin === allowed) {
+      const allowed = [
+        "http://localhost:5173",
+        "https://job-portal-steel-one-89.vercel.app", // replace with your actual Vercel URL
+      ];
+      if (!origin || allowed.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error(`CORS: origin ${origin} not allowed`));
