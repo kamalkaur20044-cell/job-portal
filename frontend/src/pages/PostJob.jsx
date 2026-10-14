@@ -198,7 +198,7 @@ const PostJob = () => {
 
           {form.salaryType === "fixed" ? (
             <div className="form-group">
-              <label htmlFor="fixedSalary">Fixed Salary ($)</label>
+              <label htmlFor="fixedSalary">Fixed Salary (₹)</label>
               <input
                 id="fixedSalary"
                 type="number"
@@ -211,7 +211,7 @@ const PostJob = () => {
           ) : (
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="salaryFrom">Salary From ($)</label>
+                <label htmlFor="salaryFrom">Salary From (₹)</label>
                 <input
                   id="salaryFrom"
                   type="number"
@@ -222,7 +222,7 @@ const PostJob = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="salaryTo">Salary To ($)</label>
+                <label htmlFor="salaryTo">Salary To (₹)</label>
                 <input
                   id="salaryTo"
                   type="number"

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { API } from "../context/AuthContext";
-import { FaMapMarkerAlt, FaBriefcase, FaDollarSign, FaSearch } from "react-icons/fa";
+import { FaMapMarkerAlt, FaBriefcase,FaSearch, FaRupeeSign } from "react-icons/fa";
 import Spinner from "../components/Spinner";
 
 const CATEGORIES = [
@@ -50,9 +50,9 @@ const Home = () => {
   });
 
   const formatSalary = (job) => {
-    if (job.fixedSalary) return `$${Number(job.fixedSalary).toLocaleString()}`;
+    if (job.fixedSalary) return `${Number(job.fixedSalary).toLocaleString("en-IN")}`;
     if (job.salaryFrom && job.salaryTo)
-      return `$${Number(job.salaryFrom).toLocaleString()} – $${Number(job.salaryTo).toLocaleString()}`;
+      return `${Number(job.salaryFrom).toLocaleString("en-IN")} – ${Number(job.salaryTo).toLocaleString("en-IN")}`;
     return "Negotiable";
   };
 
@@ -146,7 +146,7 @@ const Home = () => {
                       <FaMapMarkerAlt /> {job.city}, {job.country}
                     </span>
                     <span>
-                      <FaDollarSign /> {formatSalary(job)}
+                      <FaRupeeSign /> {formatSalary(job)}
                     </span>
                   </div>
                   <p className="job-description">

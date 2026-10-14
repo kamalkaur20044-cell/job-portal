@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { API, useAuth } from "../context/AuthContext";
-import { FaMapMarkerAlt, FaDollarSign, FaCalendarAlt, FaArrowLeft } from "react-icons/fa";
+import { FaMapMarkerAlt, FaCalendarAlt, FaArrowLeft, FaRupeeSign } from "react-icons/fa";
 import Spinner from "../components/Spinner";
 import toast from "react-hot-toast";
 
@@ -31,9 +31,9 @@ const JobDetails = () => {
   if (!job) return null;
 
   const formatSalary = () => {
-    if (job.fixedSalary) return `$${Number(job.fixedSalary).toLocaleString()} / year`;
+    if (job.fixedSalary) return `₹${Number(job.fixedSalary).toLocaleString("en-IN")} / year`;
     if (job.salaryFrom && job.salaryTo)
-      return `$${Number(job.salaryFrom).toLocaleString()} – $${Number(job.salaryTo).toLocaleString()} / year`;
+      return `₹${Number(job.salaryFrom).toLocaleString("en-IN")} – ₹${Number(job.salaryTo).toLocaleString("en-IN")} / year`;
     return "Negotiable";
   };
 
@@ -69,7 +69,7 @@ const JobDetails = () => {
             </span>
           </div>
           <div className="meta-item">
-            <FaDollarSign />
+            <FaRupeeSign />
             <span>{formatSalary()}</span>
           </div>
           <div className="meta-item">

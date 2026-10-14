@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { API } from "../context/AuthContext";
 import toast from "react-hot-toast";
-import { FaEdit, FaTrash, FaMapMarkerAlt, FaDollarSign } from "react-icons/fa";
+import { FaEdit, FaTrash, FaMapMarkerAlt, FaRupeeSign } from "react-icons/fa";
 import Spinner from "../components/Spinner";
 
 const CATEGORIES = [
@@ -43,9 +43,9 @@ const MyJobs = () => {
   }, []);
 
   const formatSalary = (job) => {
-    if (job.fixedSalary) return `$${Number(job.fixedSalary).toLocaleString()}`;
+    if (job.fixedSalary) return `₹${Number(job.fixedSalary).toLocaleString("en-IN")}`;
     if (job.salaryFrom && job.salaryTo)
-      return `$${Number(job.salaryFrom).toLocaleString()} – $${Number(job.salaryTo).toLocaleString()}`;
+      return `₹${Number(job.salaryFrom).toLocaleString("en-IN")} – ₹${Number(job.salaryTo).toLocaleString("en-IN")}`;
     return "Negotiable";
   };
 
@@ -234,7 +234,7 @@ const MyJobs = () => {
 
                 {salaryType === "fixed" ? (
                   <div className="form-group">
-                    <label>Fixed Salary ($)</label>
+                    <label>Fixed Salary (₹)</label>
                     <input
                       type="number"
                       name="fixedSalary"
@@ -246,7 +246,7 @@ const MyJobs = () => {
                 ) : (
                   <div className="form-row">
                     <div className="form-group">
-                      <label>Salary From ($)</label>
+                      <label>Salary From (₹)</label>
                       <input
                         type="number"
                         name="salaryFrom"
@@ -256,7 +256,7 @@ const MyJobs = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label>Salary To ($)</label>
+                      <label>Salary To (₹)</label>
                       <input
                         type="number"
                         name="salaryTo"
@@ -298,7 +298,7 @@ const MyJobs = () => {
                   <h3>{job.title}</h3>
                   <div className="job-meta">
                     <span><FaMapMarkerAlt /> {job.city}, {job.country}</span>
-                    <span><FaDollarSign /> {formatSalary(job)}</span>
+                    <span><FaRupeeSign /> {formatSalary(job)}</span>
                   </div>
                   <p className="job-description">
                     {job.description.length > 100
