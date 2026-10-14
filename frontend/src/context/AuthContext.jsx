@@ -4,9 +4,10 @@ import axios from "axios";
 const AuthContext = createContext();
 
 const API = axios.create({
-  baseURL: "http://localhost:8000/api/v1",
+  baseURL: "https://job-portal-fvfy.onrender.com/api/v1",
   withCredentials: true,
 });
+
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
